@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/static/admin.css?v=3">
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="login-form">
+      <img src="/admin/static/ntu_logo.png" alt="NTU logo" class="ntu-logo">
+      <h1>Backend Admin</h1>
+      <p class="subtitle">Sign in to manage the resource pool</p>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" autocomplete="username" required autofocus>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password" required>
+
+      <p class="error-msg" id="error"></p>
+
+      <button type="submit" class="btn-primary btn-login" id="submit-btn">Sign in</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("login-form");
+    const errorEl = document.getElementById("error");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Signing in...";
+
+      try {
+        const res = await fetch("/admin/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+          }),
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          window.location.href = "/admin/dashboard";
+        } else {
+          errorEl.textContent = data.error || "Login failed";
+        }
+      } catch (err) {
+        errorEl.textContent = "Could not reach the server.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign in";
+      }
+    });
+  </script>
+</body>
+</html>

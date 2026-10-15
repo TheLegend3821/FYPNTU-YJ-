@@ -1,0 +1,301 @@
+:root {
+  --bg: #f9f9f9;
+  --surface: #ffffff;
+  --surface-2: #f2f2f2;
+  --border: #e6e6e6;
+  --text: #0e0e0e;
+  --text-dim: #555555;
+  --accent: #181c62;
+  --accent-hover: #11144a;
+  --accent-red: #d71440;
+  --accent-red-hover: #b01035;
+  --danger: #c0392b;
+  --success: #1e8e3e;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Lato", "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ---- Login page ---- */
+
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.login-card .lock-icon {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.login-card h1 {
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0 0 0.25rem;
+}
+
+.login-card .subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.65rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: wait; }
+
+.btn-login {
+  background: var(--accent-red);
+}
+
+.btn-login:hover { background: var(--accent-red-hover); }
+
+.ntu-logo {
+  display: block;
+  height: 34px;
+  width: auto;
+  margin: 0 auto 0.75rem;
+}
+
+.topbar .ntu-logo {
+  height: 28px;
+  margin: 0;
+}
+
+.topbar .title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin: -0.4rem 0 1rem;
+  min-height: 1.1em;
+}
+
+/* ---- Dashboard ---- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.topbar .badge {
+  display: inline-block;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { background: var(--border); }
+
+main.dashboard {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.stat-card .label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-card .value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel h2 {
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.model-grid div {
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.model-grid .m-label {
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.empty-row {
+  color: var(--text-dim);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.panel-hint {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin: -0.4rem 0 0.9rem;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+input[type="file"] {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.ingest-status {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.ingest-status.ok { color: var(--success); }
+.ingest-status.err { color: var(--danger); }
+
+.spinner {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid rgba(14,14,14,0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 0.4rem;
+  vertical-align: -1px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

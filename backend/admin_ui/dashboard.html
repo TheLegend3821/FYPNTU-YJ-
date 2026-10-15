@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Backend Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/static/admin.css?v=3">
+</head>
+<body>
+  <div class="topbar">
+    <div class="title-group">
+      <img src="/admin/static/ntu_logo.png" alt="NTU logo" class="ntu-logo">
+      <h1>Backend Admin <span class="badge">localhost:8000</span></h1>
+    </div>
+    <button class="btn-secondary" id="logout-btn">Log out</button>
+  </div>
+
+  <main class="dashboard">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="label">Ingested chunks</div>
+        <div class="value" id="stat-chunks">&mdash;</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Resource files</div>
+        <div class="value" id="stat-files">&mdash;</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Models</h2>
+      <div class="model-grid" id="model-grid">
+        <div><div class="m-label">Vision</div><div id="model-vision">&mdash;</div></div>
+        <div><div class="m-label">Embedding</div><div id="model-embed">&mdash;</div></div>
+        <div><div class="m-label">Generation</div><div id="model-gen">&mdash;</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Upload resource file</h2>
+      <p class="panel-hint">Accepted: .txt, .md, .pdf, .docx, .xlsx, .pptx. Uploading automatically re-runs ingestion.</p>
+      <div class="panel-actions">
+        <input type="file" id="upload-input" accept=".txt,.md,.pdf,.docx,.xlsx,.xls,.pptx">
+        <button class="btn-primary" id="upload-btn" style="width:auto; padding:0.6rem 1.2rem;">Upload &amp; ingest</button>
+      </div>
+      <span class="ingest-status" id="upload-status"></span>
+    </div>
+
+    <div class="panel">
+      <h2>Resource pool</h2>
+      <table>
+        <thead><tr><th>File</th><th>Size</th></tr></thead>
+        <tbody id="files-body">
+          <tr><td colspan="2" class="empty-row">Loading...</td></tr>
+        </tbody>
+      </table>
+
+      <div class="panel-actions">
+        <button class="btn-primary" id="ingest-btn" style="width:auto; padding:0.6rem 1.2rem;">Re-run ingestion</button>
+        <span class="ingest-status" id="ingest-status"></span>
+      </div>
+    </div>
+  </main>
+
+  <script src="/admin/static/admin.js"></script>
+</body>
+</html>
