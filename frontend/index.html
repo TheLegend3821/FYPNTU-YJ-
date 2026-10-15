@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local RAG Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="title">
+        <img src="ntu_logo.png" alt="NTU logo" class="ntu-logo">
+        <div>
+          <h1>Local RAG Assistant</h1>
+          <p class="subtitle" id="status-line">Connecting...</p>
+        </div>
+      </div>
+    </header>
+
+    <main id="chat" class="chat">
+      <div class="empty-state" id="empty-state">
+        <p>Ask a question, or attach an image, PDF, Word, Excel, or PowerPoint file and ask about it.</p>
+      </div>
+    </main>
+
+    <form id="ask-form" class="composer">
+      <div class="attachment-preview" id="attachment-preview" hidden>
+        <img id="image-preview-img" alt="Attached image preview" hidden>
+        <div class="file-chip" id="file-chip" hidden>
+          <span class="file-chip-icon">&#128196;</span>
+          <span class="file-chip-name" id="file-chip-name"></span>
+        </div>
+        <button type="button" id="remove-image-btn" title="Remove attachment">&times;</button>
+      </div>
+      <div class="composer-row">
+        <button type="button" id="attach-btn" class="icon-btn" title="Attach file (image, PDF, Word, Excel, PowerPoint)">&#128206;</button>
+        <input type="file" id="image" accept="image/*,.pdf,.docx,.xlsx,.xls,.pptx" hidden>
+        <textarea id="question" rows="1" placeholder="Ask something..." required></textarea>
+        <button type="submit" id="submit-btn" class="send-btn" title="Send">&#10148;</button>
+      </div>
+      <p class="hint">Enter to send &middot; Shift+Enter for a new line</p>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
